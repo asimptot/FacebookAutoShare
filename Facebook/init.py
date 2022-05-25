@@ -1,10 +1,7 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 import time
-import re
 import warnings
-from bs4 import BeautifulSoup
-import sys
 
 class Login:
     def login(self):
