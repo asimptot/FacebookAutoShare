@@ -22,8 +22,8 @@ class Login:
 
         time.sleep(2)
         email = self.browser.find_element_by_id('email')
-        email.send_keys("joyosis972@whecode.com") #+44 7457 400328
+        email.send_keys("Your Email Address")
 
         time.sleep(2)
         password = self.browser.find_element_by_id('pass')
-        password.send_keys("10061144")
+        password.send_keys("Your Password")
