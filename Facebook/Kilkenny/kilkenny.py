@@ -2,7 +2,7 @@ import time
 import re
 from bs4 import BeautifulSoup
 import sys
-sys.path.append(r'D:\\Projects\\Sosyal\\Facebook')
+sys.path.append(r'C:\\Projects\\Sosyal\\Facebook')
 from init import *
 from selenium.webdriver.common.action_chains import ActionChains
 
