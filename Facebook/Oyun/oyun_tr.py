@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import sys
 sys.path.append(r'D:\\Projects\\Sosyal\\Facebook')
 from init import *
+from selenium.webdriver.common.action_chains import ActionChains
 
 class FBPost:
     def setup(self):
@@ -37,9 +38,9 @@ class FBPost:
             click_post.click()
             time.sleep(5)
 
-            post_content = self.browser.find_element_by_class_name('notranslate._5rpu')
-            post_content = self.browser.switch_to_active_element()
-            post_content.send_keys(text_to_post_tr)
+            actions = ActionChains(self.browser)
+            actions = actions.send_keys(text_to_post_tr)
+            actions.perform()
             time.sleep(5)
 
             soup = BeautifulSoup(self.browser.page_source, 'html.parser')

@@ -2,8 +2,9 @@ import time
 import re
 from bs4 import BeautifulSoup
 import sys
-sys.path.append(r'D:\\Projects\\Sosyal\\Facebook')
+sys.path.append(r'C:\\Projects\\Sosyal\\Facebook')
 from init import *
+from selenium.webdriver.common.action_chains import ActionChains
 
 class FBPost:
     def setup(self):
@@ -36,9 +37,9 @@ class FBPost:
             click_post.click()
             time.sleep(5)
 
-            post_content = self.browser.find_element_by_class_name('notranslate._5rpu')
-            post_content = self.browser.switch_to_active_element()
-            post_content.send_keys(text_to_post_en)
+            actions = ActionChains(self.browser)
+            actions = actions.send_keys(text_to_post_en)
+            actions.perform()
             time.sleep(5)
 
             soup = BeautifulSoup(self.browser.page_source, 'html.parser')
@@ -59,7 +60,7 @@ class FBPost:
 fb = FBPost()
 fb.setup()
 
-oyun_en = ["227842967426189", "appandroiddeveloper", "2061280740824150", "3288987951179541",
+oyun_en = ["227842967426189", "appandroiddeveloper", "2061280740824150", "3288987951179541", "1507491152850856",
            "340386762706349", "470456896341368", "509078119424610", "androidevil", "308278413765308", "ggcreators",
            "btvgamingofficialgroup", "810855769860840", "831204153907361", "511573835572177", "1023527604798068",
            "Androidiapa", "blackberry.android", "24269513", "3954131844626903", "supercarstopspeed",

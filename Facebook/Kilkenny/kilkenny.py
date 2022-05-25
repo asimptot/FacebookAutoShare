@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import sys
 sys.path.append(r'D:\\Projects\\Sosyal\\Facebook')
 from init import *
+from selenium.webdriver.common.action_chains import ActionChains
 
 class FBPost:
     def setup(self):
@@ -44,9 +45,9 @@ class FBPost:
             click_post.click()
             time.sleep(5)
 
-            post_content = self.browser.find_element_by_class_name('notranslate._5rpu')
-            post_content = self.browser.switch_to_active_element()
-            post_content.send_keys(text_to_post)
+            actions = ActionChains(self.browser)
+            actions = actions.send_keys(text_to_post)
+            actions.perform()
             time.sleep(5)
 
             soup = BeautifulSoup(self.browser.page_source, 'html.parser')
@@ -74,5 +75,4 @@ kilkenny = ["1430412867205426", "2825610674352955", "148605668543143", "18257947
 for i in range(len(kilkenny)):
     group_url = 'https://www.facebook.com/groups/' + kilkenny[i] + '/buy_sell_discussion'
     fb.post_on_facebook(group_url)
-    fb.browser.save_screenshot(kilkenny[i]+'.png')
 fb.close_browser()
