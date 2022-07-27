@@ -55,7 +55,7 @@ class FBPost:
 fb = FBPost()
 fb.setup()
 
-izmir = ["izmirelektronikalimsatimtakas", "izmirxizmir", "izmirlilerburada", "1499452027011704",
+izmir = ["izmirelektronikalimsatimtakas", "izmirxizmir", "1499452027011704",
          "karsiyakabitpazari", "izmirikincielpazarim", "izmirenglishspeakers", "izmirbilgisayar", "1624712331149186",
          "629100274121495", "1221311804559488", "1549495335274303", "3391919157530736", "izmirikincielgrup",
 		 "251687191870465", "izmirdecevirme", "700258443358488", "izmirsosyetepazari", "1568985910018328",
