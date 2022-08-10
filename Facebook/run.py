@@ -110,6 +110,11 @@ def pet():
     os.chdir(r'C:\\Projects\\Sosyal\\Facebook\\PetSahiplen')
     os.system('python pet_sahiplen.py')
 
+def ucacaksin():
+    os.system('C:')
+    os.chdir(r'C:\\Projects\\Sosyal\\Facebook\\Ucacaksin')
+    os.system('python ucacaksin.py')
+
 deger = input("Hangi app?\n")
 
 if deger=='alaşehir':
@@ -171,3 +176,6 @@ elif deger=='tavşanlı':
 
 elif deger=='torbalı':
     torbali()
+
+elif deger=='ucacaksin':
+    ucacaksin()

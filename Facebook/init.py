@@ -13,7 +13,7 @@ class Setup:
         warnings.filterwarnings("ignore")
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--window-size=1036, 674')
-        #chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--headless')
         chrome_options.add_argument("--log-level=3")
         chrome_options.add_experimental_option("prefs", {
             "profile.default_content_setting_values.notifications": 1
@@ -42,7 +42,7 @@ class Setup:
 
         time.sleep(2)
         password = self.browser.find_element('id', 'pass')
-        password.send_keys("haschmeth250*7")
+        password.send_keys("haschmeth250*8")
         time.sleep(2)
         submit_button = self.browser.find_element('name', 'login')
         submit_button.click()
@@ -67,10 +67,10 @@ class Setup:
             xpath = '//*[@id="' + id_ + '"]/div/div[1]/div/div[4]/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/form/div/div[1]/div/div/div[1]/div/div[3]/div[2]/div[1]/div'
             post = self.browser.find_element('xpath', xpath)
             post.click()
-            time.sleep(5)
+            time.sleep(300)
 
         except:
-            print("Something went wrong, exiting script to avoid conflicts")
+            print("")
 
     def close_browser(self):
         self.browser.close()

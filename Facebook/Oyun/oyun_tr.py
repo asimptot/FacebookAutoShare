@@ -34,13 +34,12 @@ class FBPost:
 fb = FBPost()
 fb.setup()
 
-oyun_tr = ["1249974598366070", "androidoyun", "AndroidGelistirme", "GeneralMobileAndroidOne4G", "TOG.OyunTanitim",
+oyun_tr = ["1249974598366070", "androidoyun", "AndroidGelistirme", "GeneralMobileAndroidOne4G", "1018785974868713",
         "AndroidProgramGelistiricileri", "softwaredevsgroup", "320608442250298", "394535784235625", "unlostv",
-        "1028228647188038", "MobilGelistiriciler", "1176041742464242", "oyuncununbilgisayari",
-        "1725332541112353", "togog", "MtaServerlers", "pc.toplama", "oyungelistiriciler",
+        "1028228647188038", "MobilGelistiriciler", "oyuncununbilgisayari", "trcastleclash", "btogtoplulugu",
+        "1725332541112353", "togog", "MtaServerlers", "oyungelistiriciler", "1511527392393141", "androcag",
         "programlamaogreniyorum", "yazilimgelistir", "1232456353464456", "654147301273036", "1502268376707060",
-        "219888054757307", "androcag", "arenaofvalornoss", "1511527392393141", "1018785974868713", "btogtoplulugu",
-        "trcastleclash"]
+        "219888054757307", "arenaofvalornoss"]
 
 for i in range(len(oyun_tr)):
     group_url = 'https://www.facebook.com/groups/' + oyun_tr[i] + '/buy_sell_discussion'

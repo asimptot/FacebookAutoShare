@@ -8,10 +8,6 @@ class FBPost:
     def setup(self):
         Setup.login(self)
         time.sleep(2)
-        submit_button = self.browser.find_element_by_name('login')
-        submit_button.click()
-        time.sleep(2)
-        self.browser.get('https://www.facebook.com/')
 
     def post_on_facebook(self, group_url):
         print('Posting  on Facebook group: ', group_url)
