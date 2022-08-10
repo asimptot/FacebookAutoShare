@@ -38,11 +38,11 @@ class Setup:
 
         time.sleep(2)
         email = self.browser.find_element('id', 'email')
-        email.send_keys("nagavaga")
+        email.send_keys("USERNAME")
 
         time.sleep(2)
         password = self.browser.find_element('id', 'pass')
-        password.send_keys("haschmeth250*8")
+        password.send_keys("PASSWORD")
         time.sleep(2)
         submit_button = self.browser.find_element('name', 'login')
         submit_button.click()
