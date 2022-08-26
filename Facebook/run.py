@@ -115,10 +115,18 @@ def ucacaksin():
     os.chdir(r'C:\\Projects\\Sosyal\\Facebook\\Ucacaksin')
     os.system('python ucacaksin.py')
 
+def araba():
+    os.system('C:')
+    os.chdir(r'C:\\Projects\\Sosyal\\Facebook\\Araba')
+    os.system('python araba.py')
+
 deger = input("Hangi app?\n")
 
 if deger=='alaşehir':
     alasehir()
+
+elif deger=='araba':
+    araba()
 
 elif deger=='ayrancılar':
     ayrancilar()
