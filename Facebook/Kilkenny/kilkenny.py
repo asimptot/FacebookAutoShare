@@ -42,9 +42,9 @@ class FBPost:
 fb = FBPost()
 fb.setup()
 
-kilkenny = ["1430412867205426", "2825610674352955", "148605668543143", "1825794714335734",
+kilkenny = ["1430412867205426", "2825610674352955", "148605668543143", "350691288286807", "teqsportskilkenny",
 			"kilkennybitsandshits", "1587632794804215", "140111069525242", "301199310059406", "631488383595071",
-            "350691288286807", "teqsportskilkenny", "2140959319539978"]
+            "2140959319539978"]
 
 for i in range(len(kilkenny)):
     group_url = 'https://www.facebook.com/groups/' + kilkenny[i] + '/buy_sell_discussion'

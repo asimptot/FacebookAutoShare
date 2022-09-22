@@ -13,7 +13,22 @@ class FBPost:
         time.sleep(4)
         self.browser.get(group_url)
         time.sleep(2)
-        text_to_post = 'Guzel Izmir''imin guzel insanlari selamlar :)\n\nYeni uygulamam Izmirde Hayat Play Storeda. Icerikte neler mi var?\n\n-Konserler\n-Tiyatrolar\n-Opera ve Bale Etkinlikleri\n-Duyurular\n-Deprem Haberleri\n-Firsatlar\n-Izban, Metro, Eshot, Vapur saatleri ve duyurulari\n-Izmirim Kart Bakiye Sorgulama\n-Sinema Seanslari\n-Nobetci Eczaneler\n-Su ve Elektrik Arizalari\n\nHepsi tek bir uygulamada birlesti. Gule gule kullanin ^^\n\nhttps://play.google.com/store/apps/details?id=izmirde.hayat'
+
+        text_to_post = 'Guzel Izmir''imin guzel insanlari selamlar :)\n\n' \
+                       'Yeni uygulamam Izmirde Hayat Play Storeda. Icerikte neler mi var?\n\n' \
+                       '-Konserler\n' \
+                       '-Tiyatrolar\n' \
+                       '-Opera ve Bale Etkinlikleri\n' \
+                       '-Duyurular\n' \
+                       '-Deprem Haberleri\n' \
+                       '-Firsatlar\n' \
+                       '-Izban, Metro, Eshot, Vapur saatleri ve duyurulari\n' \
+                       '-Izmirim Kart Bakiye Sorgulama\n' \
+                       '-Sinema Seanslari\n-Nobetci Eczaneler\n' \
+                       '-Su ve Elektrik Arizalari\n\n' \
+                       'Hepsi tek bir uygulamada birlesti. Gule gule kullanin ^^\n\n' \
+                       'https://play.google.com/store/apps/details?id=izmirde.hayat'
+
         Setup.ready_for_post(self)
         actions = ActionChains(self.browser)
         actions = actions.send_keys(text_to_post)

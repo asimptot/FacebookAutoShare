@@ -36,12 +36,12 @@ fb.setup()
 
 oyun_en = ["227842967426189", "appandroiddeveloper", "2061280740824150", "3288987951179541", "1507491152850856",
            "340386762706349", "470456896341368", "509078119424610", "androidevil", "308278413765308", "ggcreators",
-           "btvgamingofficialgroup", "810855769860840", "831204153907361", "511573835572177", "1023527604798068",
-           "Androidiapa", "blackberry.android", "24269513", "3954131844626903", "supercarstopspeed",
+           "btvgamingofficialgroup", "810855769860840", "831204153907361", "511573835572177", "1518367058334244",
+           "Androidiapa", "blackberry.android", "3954131844626903", "supercarstopspeed", "2205727453048193",
            "mobileappdevelopments", "519011588455568", "mobiloids", "thegamerlife", "gamersfrpnet", "501410144060723",
            "gamdeveloper", "355723031242469", "319019998906454", "273058220704295", "streamandpagesharing", "3dswiiugamers",
            "627460971527298", "499649376898165", "185762810426343", "scottsvintagemancavestuff", "318039912719508",
-           "152228903476838", "2205727453048193", "1518367058334244"]
+           "152228903476838"]
 
 for i in range(len(oyun_en)):
     group_url = 'https://www.facebook.com/groups/' + oyun_en[i] + '/buy_sell_discussion'
