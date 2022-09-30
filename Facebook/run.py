@@ -120,6 +120,11 @@ def araba():
     os.chdir(r'C:\\Projects\\Sosyal\\Facebook\\Araba')
     os.system('python araba.py')
 
+def netherlandspat():
+    os.system('C:')
+    os.chdir(r'C:\\Projects\\Sosyal\\Facebook\\Netherlandspat')
+    os.system('python netherlandspat.py')
+
 deger = input("Hangi app?\n")
 
 if deger=='alaşehir':
@@ -164,6 +169,9 @@ elif deger=='manavgat':
 elif deger=='midyat':
     midyat()
 
+elif deger=='netherlandspat':
+    netherlandspat()
+
 elif deger=='oyun_en':
     oyun_en()
 
@@ -187,3 +195,6 @@ elif deger=='torbalı':
 
 elif deger=='ucacaksin':
     ucacaksin()
+
+else:
+    print('Wrong value!')
