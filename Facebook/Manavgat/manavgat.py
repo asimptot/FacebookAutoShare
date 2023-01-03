@@ -47,9 +47,7 @@ manavgat = ["1977654352501132", "152068948488893", "mangpz", "1235365273171718",
             "316784738707982", "1289244694459337", "945037175514343", "369677536786148", "407676326728979",
             "antalyateknealimsatim", "556712624481818"]
 
-list = sample(manavgat, len(manavgat))
-
-for i in range(len(manavgat)):
-    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
-    fb.post_on_facebook(group_url)
+list = random.choice(manavgat)
+group_url = 'https://www.facebook.com/groups/' + list + '/buy_sell_discussion'
+fb.post_on_facebook(group_url)
 fb.close_browser()
