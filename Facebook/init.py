@@ -7,7 +7,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import re
-from random import randint
+from random import randint, sample
 
 class Setup:
     def login(self):
