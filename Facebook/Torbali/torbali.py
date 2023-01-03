@@ -2,7 +2,6 @@ import time
 import sys
 sys.path.append(r'C:\\Projects\\Sosyal\\Facebook')
 from init import *
-from selenium.webdriver.common.action_chains import ActionChains
 
 class FBPost:
     def setup(self):
@@ -49,7 +48,9 @@ torbali = ["1674448666166233", "torbalidais", "1674152716182011", "TRMEHMET", "3
            "1581787365415048", "281538418715072", "1232530130137892", "827540141115373", "tobedak",
            "343288555591", "275915996290129", "624143651345231", "213121952562502", "3737007473081269"]
 
+list = sample(torbali, len(torbali))
+
 for i in range(len(torbali)):
-    group_url = 'https://www.facebook.com/groups/' + torbali[i] + '/buy_sell_discussion'
+    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
     fb.post_on_facebook(group_url)
 fb.close_browser()
