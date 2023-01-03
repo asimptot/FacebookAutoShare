@@ -44,9 +44,7 @@ saruhanli = ["3621892841232883", "625696608295240", "1026591190722191", "3623811
              "1712520632328326", "2593150607677028", "217516450021487", "877884799676171", "399218583842570",
              "654117541890123", "112334160927"]
 
-list = sample(saruhanli, len(saruhanli))
-
-for i in range(len(saruhanli)):
-    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
-    fb.post_on_facebook(group_url)
+list = random.choice(saruhanli)
+group_url = 'https://www.facebook.com/groups/' + list + '/buy_sell_discussion'
+fb.post_on_facebook(group_url)
 fb.close_browser()
