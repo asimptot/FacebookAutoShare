@@ -40,9 +40,7 @@ oyun_tr = ["1249974598366070", "androidoyun", "AndroidGelistirme", "GeneralMobil
         "programlamaogreniyorum", "yazilimgelistir", "1232456353464456", "654147301273036", "1502268376707060",
         "219888054757307", "arenaofvalornoss"]
 
-list = sample(oyun_tr, len(oyun_tr))
-
-for i in range(len(oyun_tr)):
-    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
-    fb.post_on_facebook(group_url)
+list = random.choice(oyun_tr)
+group_url = 'https://www.facebook.com/groups/' + list + '/buy_sell_discussion'
+fb.post_on_facebook(group_url)
 fb.close_browser()
