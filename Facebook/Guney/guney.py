@@ -35,9 +35,7 @@ fb.setup()
 guney = ["317257795000307", "1483642681793339", "126322934624594", "6297103294", "615241465344174",
          "662521437623764", "denizliguneycokresmisitesi", "1www234567891", "112811418811816"]
 
-list = sample(guney, len(guney))
-
-for i in range(len(guney)):
-    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
-    fb.post_on_facebook(group_url)
+list = random.choice(guney)
+group_url = 'https://www.facebook.com/groups/' + list + '/buy_sell_discussion'
+fb.post_on_facebook(group_url)
 fb.close_browser()
