@@ -46,9 +46,7 @@ esme = ["762951934454642", "1493055600830700", "452448632246858", "1030065057498
 		"3115960435151650", "2302795416666275", "1751474938464718", "599522303449499", "180888425302580", "esmeet",
         "539569122884209", "515028112596989", "694003467429707"]
 
-list = sample(esme, len(esme))
-
-for i in range(len(esme)):
-    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
-    fb.post_on_facebook(group_url)
+list = random.choice(esme)
+group_url = 'https://www.facebook.com/groups/' + list + '/buy_sell_discussion'
+fb.post_on_facebook(group_url)
 fb.close_browser()
