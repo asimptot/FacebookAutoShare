@@ -45,7 +45,9 @@ alasehir = ["2482168202011446", "202346793639366", "203321580789724", "325220324
             "496732401291955", "728139434428844", "747661711923559", "566967630721933", "1171012322964102",
             "alasehirkiraliksatilikgayrimenkul"]
 
+list = sample(alasehir, len(alasehir))
+
 for i in range(len(alasehir)):
-    group_url = 'https://www.facebook.com/groups/' + alasehir[i] + '/buy_sell_discussion'
+    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
     fb.post_on_facebook(group_url)
 fb.close_browser()
