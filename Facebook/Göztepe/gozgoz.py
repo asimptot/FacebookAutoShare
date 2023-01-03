@@ -45,9 +45,7 @@ goztepe = ["632261113598528", "567832526708370", "278916619179669", "16919705772
            "416889008451550", "163485201272958", "259820858593897", "453152851683911", "257968525316500", "680538306155255",
            "156296471231004", "384831866221969", "202802114364116", "368964550120282", "1119653814739937", "936992506365153"]
 
-list = sample(goztepe, len(goztepe))
-
-for i in range(len(goztepe)):
-    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
-    fb.post_on_facebook(group_url)
+list = random.choice(goztepe)
+group_url = 'https://www.facebook.com/groups/' + list + '/buy_sell_discussion'
+fb.post_on_facebook(group_url)
 fb.close_browser()
