@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 import sys
 sys.path.append(r'C:\\Projects\\Sosyal\\Facebook')
 from init import *
-from selenium.webdriver.common.action_chains import ActionChains
 
 class FBPost:
     def setup(self):
@@ -73,7 +72,9 @@ sozluk = ["egeevarkadasi", "1430596860532102", "254187258119986", "TopluluklarEg
           "6104626645", "18659112496", "748088955207007", "161523990674375", "226917504020810", "egeuniversitesigezi",
           "172110019647"]
 
+list = sample(sozluk, len(sozluk))
+
 for i in range(len(sozluk)):
-    group_url = 'https://www.facebook.com/groups/' + sozluk[i] + '/buy_sell_discussion'
+    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
     fb.post_on_facebook(group_url)
 fb.close_browser()
