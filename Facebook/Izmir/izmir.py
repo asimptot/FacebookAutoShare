@@ -51,9 +51,7 @@ izmir = ["izmirelektronikalimsatimtakas", "izmirxizmir", "1499452027011704",
          "huncalife35", "231718924618567", "1572859096305343", "221942534620065", "888522511347259", "700258443358488",
          "tam35sohbet", "izmirsondakika", "401921643297200", "1946103148767720", "1786050418326386", "286039838397195"]
 
-list = sample(izmir, len(izmir))
-
-for i in range(len(izmir)):
-    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
-    fb.post_on_facebook(group_url)
+list = random.choice(izmir)
+group_url = 'https://www.facebook.com/groups/' + list + '/buy_sell_discussion'
+fb.post_on_facebook(group_url)
 fb.close_browser()
