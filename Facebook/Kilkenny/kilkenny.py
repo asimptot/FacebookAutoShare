@@ -45,9 +45,7 @@ kilkenny = ["1430412867205426", "2825610674352955", "148605668543143", "35069128
 			"kilkennybitsandshits", "1587632794804215", "140111069525242", "301199310059406", "631488383595071",
             "2140959319539978"]
 
-list = sample(kilkenny, len(kilkenny))
-
-for i in range(len(kilkenny)):
-    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
-    fb.post_on_facebook(group_url)
+list = random.choice(kilkenny)
+group_url = 'https://www.facebook.com/groups/' + list + '/buy_sell_discussion'
+fb.post_on_facebook(group_url)
 fb.close_browser()
