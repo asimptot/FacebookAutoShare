@@ -45,7 +45,9 @@ ayrancilar = ["ayrancilar", "281538418715072", "2059423444286714", "516400849066
 			  "333284927980868", "2460181387617813", "167141027960807", "torbalidais", "1068832396815501",
 			  "207248929672296", "131859181017957", "453756859346524", "712485366009386", "3441863649184399"]
 
+list = sample(ayrancilar, len(ayrancilar))
+
 for i in range(len(ayrancilar)):
-    group_url = 'https://www.facebook.com/groups/' + ayrancilar[i] + '/buy_sell_discussion'
+    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
     fb.post_on_facebook(group_url)
 fb.close_browser()
