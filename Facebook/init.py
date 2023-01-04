@@ -1,13 +1,13 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-import time
+from time import sleep
 import warnings
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import re
-from random import randint, sample
+from random import randint, sample, choice
 
 class Setup:
     def login(self):
@@ -23,7 +23,7 @@ class Setup:
         self.browser = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options, )
         self.browser.get('https://www.facebook.com/')
 
-        time.sleep(5)
+        sleep(5)
 
         N = 26  # number of times you want to press TAB
 
@@ -32,31 +32,32 @@ class Setup:
             actions = actions.send_keys(Keys.TAB)
         actions.perform()
 
-        time.sleep(2)
+        sleep(2)
         actions1 = ActionChains(self.browser)
         actions1.send_keys(Keys.RETURN)
         actions1.perform()
 
-        time.sleep(2)
+        sleep(2)
         email = self.browser.find_element('id', 'email')
-        email.send_keys("USERNAME")
+        email.send_keys("YOUR FACEBOOK USERNAME OR ID")
 
-        time.sleep(2)
+        sleep(2)
         password = self.browser.find_element('id', 'pass')
-        password.send_keys("PASSWORD")
-        time.sleep(2)
+        password.send_keys("YOUR FACEBOOK PASSWORD")
+        sleep(2)
         submit_button = self.browser.find_element('name', 'login')
         submit_button.click()
-        time.sleep(2)
+        sleep(2)
         self.browser.get('https://www.facebook.com/')
 
     def ready_for_post(self):
         try:
-            post_class = 'rtxb060y hpj0pwwo lc19xlkw l4uc2m3f mfclru0v t7p7dqev'
+            #post_class = 'rtxb060y hpj0pwwo lc19xlkw l4uc2m3f mfclru0v t7p7dqev'
+            post_class = 'x1i10hfl x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x16tdsg8 x1hl2dhg xggy1nq x87ps6o x1lku1pv x1a2a7pz x6s0dn4 xmjcpbm x107yiy2 xv8uw2v x1tfwpuw x2g32xy x78zum5 x1q0g3np x1iyjqo2 x1nhvcw1 x1n2onr6 xt7dq6l x1ba4aug x1y1aw1k xn6708d xwib8y2 x1ye3gou'
             post_class = post_class.replace(' ', '.')
             click_post = self.browser.find_element(By.CLASS_NAME, post_class)
             click_post.click()
-            time.sleep(5)
+            sleep(10)
         except:
             print("Something went wrong, exiting script to avoid conflicts")
 
@@ -69,7 +70,7 @@ class Setup:
             post = self.browser.find_element('xpath', xpath)
             post.click()
             delay = randint(300, 600)
-            time.sleep(delay)
+            sleep(delay)
 
         except:
             print("")
