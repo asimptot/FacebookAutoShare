@@ -33,13 +33,11 @@ class Setup:
         actions.perform()
 
         sleep(2)
-        actions1 = ActionChains(self.browser)
-        actions1.send_keys(Keys.RETURN)
-        actions1.perform()
+        actions.send_keys(Keys.RETURN).perform()
 
         sleep(2)
         email = self.browser.find_element('id', 'email')
-        email.send_keys("YOUR FACEBOOK USERNAME OR ID")
+        email.send_keys("YOUR FACEBOOK USERNAME")
 
         sleep(2)
         password = self.browser.find_element('id', 'pass')
@@ -47,7 +45,7 @@ class Setup:
         sleep(2)
         submit_button = self.browser.find_element('name', 'login')
         submit_button.click()
-        sleep(2)
+        sleep(5)
         self.browser.get('https://www.facebook.com/')
 
     def ready_for_post(self):
