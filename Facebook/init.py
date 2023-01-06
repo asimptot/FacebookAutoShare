@@ -5,8 +5,6 @@ import warnings
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
-from bs4 import BeautifulSoup
-import re
 from random import randint, sample, choice
 
 class Setup:
@@ -50,23 +48,34 @@ class Setup:
 
     def ready_for_post(self):
         try:
-            #post_class = 'rtxb060y hpj0pwwo lc19xlkw l4uc2m3f mfclru0v t7p7dqev'
             post_class = 'x1i10hfl x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x16tdsg8 x1hl2dhg xggy1nq x87ps6o x1lku1pv x1a2a7pz x6s0dn4 xmjcpbm x107yiy2 xv8uw2v x1tfwpuw x2g32xy x78zum5 x1q0g3np x1iyjqo2 x1nhvcw1 x1n2onr6 xt7dq6l x1ba4aug x1y1aw1k xn6708d xwib8y2 x1ye3gou'
             post_class = post_class.replace(' ', '.')
             click_post = self.browser.find_element(By.CLASS_NAME, post_class)
             click_post.click()
             sleep(10)
         except:
-            print("Something went wrong, exiting script to avoid conflicts")
+            print("Something went wrong, exiting script to avoid conflicts\n")
 
     def send_post(self):
         try:
+            '''
             soup = BeautifulSoup(self.browser.page_source, 'html.parser')
             all_pc = soup.find_all('div', attrs={'id': re.compile("^mount_0_0_")})
             id_ = str(all_pc[0].get('id'))
             xpath = '//*[@id="' + id_ + '"]/div/div[1]/div/div[4]/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/form/div/div[1]/div/div/div[1]/div/div[3]/div[2]/div[1]/div'
             post = self.browser.find_element('xpath', xpath)
             post.click()
+            '''
+            N = 11  # number of times you want to press TAB
+
+            actions = ActionChains(self.browser)
+            for _ in range(N):
+                actions = actions.send_keys(Keys.TAB)
+            actions.perform()
+
+            sleep(2)
+            actions.send_keys(Keys.RETURN).perform()
+
             delay = randint(300, 600)
             sleep(delay)
 
