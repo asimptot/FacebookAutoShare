@@ -58,16 +58,7 @@ class Setup:
 
     def send_post(self):
         try:
-            '''
-            soup = BeautifulSoup(self.browser.page_source, 'html.parser')
-            all_pc = soup.find_all('div', attrs={'id': re.compile("^mount_0_0_")})
-            id_ = str(all_pc[0].get('id'))
-            xpath = '//*[@id="' + id_ + '"]/div/div[1]/div/div[4]/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/form/div/div[1]/div/div/div[1]/div/div[3]/div[2]/div[1]/div'
-            post = self.browser.find_element('xpath', xpath)
-            post.click()
-            '''
             N = 11  # number of times you want to press TAB
-
             actions = ActionChains(self.browser)
             for _ in range(N):
                 actions = actions.send_keys(Keys.TAB)
