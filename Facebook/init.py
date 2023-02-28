@@ -6,6 +6,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from random import randint, sample, choice
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 class Setup:
     def login(self):
@@ -58,6 +60,12 @@ class Setup:
 
     def send_post(self):
         try:
+            send_post = WebDriverWait(self.browser, 10).until(
+                EC.element_to_be_clickable((By.XPATH,
+                                            '//*[starts-with(@id,"mount_0_0")]/div/div[1]/div/div[4]/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/form/div/div[1]/div/div/div[1]/div/div[3]/div[2]/div/div/div'))
+            )
+            send_post.click()
+            '''
             N = 11  # number of times you want to press TAB
             actions = ActionChains(self.browser)
             for _ in range(N):
@@ -66,7 +74,7 @@ class Setup:
 
             sleep(2)
             actions.send_keys(Keys.RETURN).perform()
-
+            '''
             delay = randint(300, 600)
             sleep(delay)
 
