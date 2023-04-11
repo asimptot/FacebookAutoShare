@@ -1,5 +1,5 @@
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
+import undetected_chromedriver as uc
 from time import sleep
 import warnings
 from selenium.webdriver.common.keys import Keys
@@ -11,18 +11,21 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 class Setup:
     def login(self):
-        warnings.filterwarnings("ignore")
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument('--window-size=1036, 674')
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument("--log-level=3")
-        chrome_options.add_experimental_option("prefs", {
-            "profile.default_content_setting_values.notifications": 1
-        })
+        chrome_options = uc.ChromeOptions()
+        chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument("--mute-audio")
+        chrome_options.add_argument("--disable-popup-blocking")
+        chrome_options.add_argument("--disable-notifications")
+        chrome_options.add_argument('--disable-extensions')
+        chrome_options.add_argument('--disable-translate')
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument('--no-sandbox')
+        prefs = {"credentials_enable_service": False,
+                 "profile.password_manager_enabled": False}
+        chrome_options.add_experimental_option("prefs", prefs)
+        self.browser = uc.Chrome(options=chrome_options, version_main=110)
 
-        self.browser = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options, )
         self.browser.get('https://www.facebook.com/')
-
         sleep(5)
 
         N = 26  # number of times you want to press TAB
@@ -37,11 +40,11 @@ class Setup:
 
         sleep(2)
         email = self.browser.find_element('id', 'email')
-        email.send_keys("YOUR FACEBOOK USERNAME")
+        email.send_keys("YOUR USERNAME")
 
         sleep(2)
         password = self.browser.find_element('id', 'pass')
-        password.send_keys("YOUR FACEBOOK PASSWORD")
+        password.send_keys("YOUR PASSWORD")
         sleep(2)
         submit_button = self.browser.find_element('name', 'login')
         submit_button.click()
