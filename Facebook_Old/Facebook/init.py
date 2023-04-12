@@ -1,12 +1,13 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-import time
-import warnings
+from time import sleep
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
-import re
+import re, warnings
 from random import randint, sample
 
 class Setup:
@@ -22,32 +23,28 @@ class Setup:
 
         self.browser = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options, )
         self.browser.get('https://www.facebook.com/')
-
-        time.sleep(5)
+        sleep(5)
 
         N = 26  # number of times you want to press TAB
 
         actions = ActionChains(self.browser)
         for _ in range(N):
-            actions = actions.send_keys(Keys.TAB)
-        actions.perform()
+            actions.send_keys(Keys.TAB).perform()
 
-        time.sleep(2)
-        actions1 = ActionChains(self.browser)
-        actions1.send_keys(Keys.RETURN)
-        actions1.perform()
+        sleep(2)
+        actions.send_keys(Keys.RETURN).perform()
 
-        time.sleep(2)
+        sleep(2)
         email = self.browser.find_element('id', 'email')
-        email.send_keys("YOUR USERNAME")
+        email.send_keys("YOUR FACEBOOK USERNAME")
 
-        time.sleep(2)
+        sleep(2)
         password = self.browser.find_element('id', 'pass')
-        password.send_keys("YOUR PASSWORD")
-        time.sleep(2)
+        password.send_keys("YOUR FACEBOOK PASSWORD")
+        sleep(2)
         submit_button = self.browser.find_element('name', 'login')
         submit_button.click()
-        time.sleep(2)
+        sleep(2)
         self.browser.get('https://www.facebook.com/')
 
     def ready_for_post(self):
@@ -56,20 +53,20 @@ class Setup:
             post_class = post_class.replace(' ', '.')
             click_post = self.browser.find_element(By.CLASS_NAME, post_class)
             click_post.click()
-            time.sleep(5)
+            sleep(5)
         except:
             print("Something went wrong, exiting script to avoid conflicts")
 
     def send_post(self):
         try:
-            soup = BeautifulSoup(self.browser.page_source, 'html.parser')
-            all_pc = soup.find_all('div', attrs={'id': re.compile("^mount_0_0_")})
-            id_ = str(all_pc[0].get('id'))
-            xpath = '//*[@id="' + id_ + '"]/div/div[1]/div/div[4]/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/form/div/div[1]/div/div/div[1]/div/div[3]/div[2]/div[1]/div'
-            post = self.browser.find_element('xpath', xpath)
-            post.click()
+            send_post = WebDriverWait(self.browser, 10).until(
+                EC.element_to_be_clickable((By.XPATH,
+                                            '//*[starts-with(@id,"mount_0_0")]/div/div[1]/div/div[4]/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/form/div/div[1]/div/div/div[1]/div/div[3]/div[2]/div/div/div'))
+            )
+            send_post.click()
+
             delay = randint(300, 600)
-            time.sleep(delay)
+            sleep(delay)
 
         except:
             print("")
