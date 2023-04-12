@@ -1,17 +1,17 @@
-import time
 import sys
-sys.path.append(r'C:\\Projects\\Sosyal\\Facebook')
+sys.path.append(r'C:\\Projects\\Facebook_Old\\Facebook')
 from init import *
 
 class FBPost:
     def setup(self):
         Setup.login(self)
+        sleep(2)
 
     def post_on_facebook(self, group_url):
         print('Posting  on Facebook group: ', group_url)
-        time.sleep(4)
+        sleep(4)
         self.browser.get(group_url)
-        time.sleep(2)
+        sleep(2)
 
         text_to_post_en = 'Hi all, \n\n\n' \
                        'Retro Arcade Games are now on our smart phone! :) About: \n\n' \
@@ -20,12 +20,25 @@ class FBPost:
                        'To download please click in the following link: \n\n' \
                        'https://play.google.com/store/apps/details?id=oyunhane.abvl'
 
-        Setup.ready_for_post(self)
-        actions = ActionChains(self.browser)
-        actions = actions.send_keys(text_to_post_en)
-        actions.perform()
-        time.sleep(5)
-        Setup.send_post(self)
+        try:
+            post_class = 'x1i10hfl x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x16tdsg8 x1hl2dhg xggy1nq x87ps6o x1lku1pv x1a2a7pz x6s0dn4 xmjcpbm x107yiy2 xv8uw2v x1tfwpuw x2g32xy x78zum5 x1q0g3np x1iyjqo2 x1nhvcw1 x1n2onr6 xt7dq6l x1ba4aug x1y1aw1k xn6708d xwib8y2 x1ye3gou'
+            post_class = post_class.replace(' ', '.')
+            click_post = self.browser.find_element(By.CLASS_NAME, post_class)
+            click_post.click()
+            sleep(10)
+
+            actions = ActionChains(self.browser)
+            actions.send_keys(text_to_post_en).perform()
+            sleep(5)
+
+            send_post = WebDriverWait(self.browser, 10).until(
+                EC.element_to_be_clickable((By.XPATH,
+                                            '//*[starts-with(@id,"mount_0_0")]/div/div[1]/div/div[4]/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/form/div/div[1]/div/div/div[1]/div/div[3]/div[2]/div/div/div'))
+            )
+            send_post.click()
+            sleep(300)
+        except:
+            print("Something went wrong, exiting script to avoid conflicts")
 
     def close_browser(self):
         self.browser.close()
@@ -43,8 +56,10 @@ oyun_en = ["227842967426189", "appandroiddeveloper", "2061280740824150", "328898
            "152228903476838"]
 
 list = sample(oyun_en, len(oyun_en))
-
 for i in range(len(oyun_en)):
     group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
     fb.post_on_facebook(group_url)
+    if i % 5 == 0:
+        print('1 saat bekletiliyor...')
+        sleep(3600)
 fb.close_browser()
