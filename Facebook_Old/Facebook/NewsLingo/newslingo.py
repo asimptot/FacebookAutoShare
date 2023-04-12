@@ -1,22 +1,17 @@
-import time
 import sys
 sys.path.append(r'C:\\Projects\\Facebook_Old\\Facebook')
 from init import *
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
 
 class FBPost:
     def setup(self):
         Setup.login(self)
-        time.sleep(2)
+        sleep(2)
 
     def post_on_facebook(self, group_url):
         print('Posting  on Facebook group: ', group_url)
-        time.sleep(4)
+        sleep(4)
         self.browser.get(group_url)
-        time.sleep(2)
+        sleep(2)
 
         text_to_post = 'Dear friends,\n' \
                        'NewsLingo app is now on our mobile phone.\n\n' \
@@ -33,18 +28,18 @@ class FBPost:
             post_class = post_class.replace(' ', '.')
             click_post = self.browser.find_element(By.CLASS_NAME, post_class)
             click_post.click()
-            time.sleep(10)
+            sleep(10)
 
             actions = ActionChains(self.browser)
             actions.send_keys(text_to_post).perform()
-            time.sleep(5)
+            sleep(5)
 
             send_post = WebDriverWait(self.browser, 10).until(
                 EC.element_to_be_clickable((By.XPATH,
                                             '//*[starts-with(@id,"mount_0_0")]/div/div[1]/div/div[4]/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/form/div/div[1]/div/div/div[1]/div/div[3]/div[2]/div/div/div'))
             )
             send_post.click()
-            time.sleep(300)
+            sleep(300)
         except:
             print("Something went wrong, exiting script to avoid conflicts")
 
@@ -60,10 +55,11 @@ newslingo = ["481561710258425", "learnenglish.improveyourenglishskills", "565542
             "ingilizceplatform", "ydspublishing", "804277272929620", "514863742009381", "englishspeaking24",
             "329454095956360"]
 
+list = sample(newslingo, len(newslingo))
 for i in range(len(newslingo)):
-    group_url = 'https://www.facebook.com/groups/' + newslingo[i] + '/buy_sell_discussion'
+    group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
     fb.post_on_facebook(group_url)
     if i % 5 == 0:
         print('1 saat bekletiliyor...')
-        time.sleep(3600)
+        sleep(3600)
 fb.close_browser()
