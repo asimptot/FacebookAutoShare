@@ -23,7 +23,7 @@ class Setup:
         prefs = {"credentials_enable_service": False,
                  "profile.password_manager_enabled": False}
         chrome_options.add_experimental_option("prefs", prefs)
-        self.browser = uc.Chrome(options=chrome_options, version_main=110)
+        self.browser = uc.Chrome(options=chrome_options, version_main=112)
 
         self.browser.get('https://www.facebook.com/')
         sleep(5)
@@ -40,11 +40,11 @@ class Setup:
 
         sleep(2)
         email = self.browser.find_element('id', 'email')
-        email.send_keys("YOUR USERNAME")
+        email.send_keys("YOUR FACEBOOK USERNAME")
 
         sleep(2)
         password = self.browser.find_element('id', 'pass')
-        password.send_keys("YOUR PASSWORD")
+        password.send_keys("YOUR FACEBOOK PASSWORD")
         sleep(2)
         submit_button = self.browser.find_element('name', 'login')
         submit_button.click()
