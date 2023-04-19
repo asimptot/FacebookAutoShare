@@ -57,17 +57,17 @@ netherlandspat = ["allexpatsinthenetherlands", "internationalexpatamsterdam", "1
             "1425158030871295", "laughingatpotatoes", "2393398401", "475997376564057",
             "889833264399671", "2513882895499019", "expatjobsinthenetherlands",
             "3391670544390704", "486835584844585", "1510096729269075",
-            "vacantes.netherlands", "UnitedExpatsoftheNetherlands", "791192707594625",
+            "791192707594625",
             "IndianExpatsInNetherlands", "8139991343", "housesinthenetherlands",
-            "2406969948", "JobsinHolland", "1657109771244718", "1157446251688203",
+            "2406969948", "1657109771244718", "1157446251688203",
             "expatseindhoven", "375891209146726", "iloveamsterdamcity", "expatrepublic",
             "exploringnetherlands", "284141089612808", "754897328263949", "2204519835",
-            "190296879768427", "1827424617527053", "288221731281767", "1503930726289016",
+            "190296879768427", "1827424617527053", "1503930726289016",
             "579985732134944", "979765652054041", "2244909725745375", "770298033460235",
             "expats.eindhoven.nl", "190230194807405", "amsterdam.housing.and.roommates",
             "605664986795169", "692490407596118", "ExpatsInAmsterdam", "1580853698814943",
             "ThefunExpatGroupofTheHague", "296739250466742", "rentamsterdam", "1123182838114831",
-            "295804230488520", "478599220659459", "2345051369046723", "765584943917713",
+            "295804230488520", "478599220659459", "2345051369046723",
             "expatcommunity", "amsterdamcentrumexpats", "883328028399315", "303940726659024"]
 
 list = sample(netherlandspat, len(netherlandspat))

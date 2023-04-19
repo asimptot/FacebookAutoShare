@@ -46,14 +46,14 @@ class FBPost:
 fb = FBPost()
 fb.setup()
 
-oyun_en = ["227842967426189", "appandroiddeveloper", "2061280740824150", "3288987951179541", "1507491152850856",
+oyun_en = ["227842967426189", "appandroiddeveloper", "2061280740824150", "3288987951179541",
            "340386762706349", "470456896341368", "509078119424610", "androidevil", "308278413765308", "ggcreators",
-           "btvgamingofficialgroup", "810855769860840", "831204153907361", "511573835572177", "1518367058334244",
+           "btvgamingofficialgroup", "810855769860840", "831204153907361", "511573835572177",
            "Androidiapa", "blackberry.android", "3954131844626903", "supercarstopspeed", "2205727453048193",
-           "mobileappdevelopments", "519011588455568", "mobiloids", "thegamerlife", "gamersfrpnet", "501410144060723",
-           "gamdeveloper", "355723031242469", "319019998906454", "273058220704295", "streamandpagesharing", "3dswiiugamers",
+           "519011588455568", "thegamerlife", "gamersfrpnet", "501410144060723",
+           "gamdeveloper", "355723031242469", "273058220704295", "streamandpagesharing",
            "627460971527298", "499649376898165", "185762810426343", "scottsvintagemancavestuff", "318039912719508",
-           "152228903476838"]
+           ]
 
 list = sample(oyun_en, len(oyun_en))
 for i in range(len(oyun_en)):

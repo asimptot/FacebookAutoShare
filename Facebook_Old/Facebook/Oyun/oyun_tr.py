@@ -46,12 +46,8 @@ class FBPost:
 fb = FBPost()
 fb.setup()
 
-oyun_tr = ["1249974598366070", "androidoyun", "AndroidGelistirme", "GeneralMobileAndroidOne4G", "1018785974868713",
-        "AndroidProgramGelistiricileri", "softwaredevsgroup", "320608442250298", "394535784235625", "unlostv",
-        "1028228647188038", "MobilGelistiriciler", "oyuncununbilgisayari", "trcastleclash", "btogtoplulugu",
-        "1725332541112353", "togog", "MtaServerlers", "oyungelistiriciler", "1511527392393141", "androcag",
-        "programlamaogreniyorum", "yazilimgelistir", "1232456353464456", "654147301273036", "1502268376707060",
-        "219888054757307", "arenaofvalornoss"]
+oyun_tr = ["programlamaogreniyorum", "oyungelistiriciler", "btogtoplulugu", "togog", "MobilGelistiriciler",
+            "AndroidProgramGelistiricileri", "softwaredevsgroup", "1502268376707060", "oyuncununbilgisayari"]
 
 list = sample(oyun_tr, len(oyun_tr))
 for i in range(len(oyun_tr)):
