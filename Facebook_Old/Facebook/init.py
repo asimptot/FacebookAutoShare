@@ -1,5 +1,4 @@
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
+from seleniumbase import Driver
 from time import sleep
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
@@ -12,20 +11,11 @@ from random import randint, sample
 
 class Setup:
     def login(self):
-        warnings.filterwarnings("ignore")
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument('--window-size=1036, 674')
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument("--log-level=3")
-        chrome_options.add_experimental_option("prefs", {
-            "profile.default_content_setting_values.notifications": 1
-        })
-
-        self.browser = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options, )
+        self.browser = Driver(headless=True)
         self.browser.get('https://www.facebook.com/')
         sleep(5)
 
-        N = 26  # number of times you want to press TAB
+        N = 25  # number of times you want to press TAB
 
         actions = ActionChains(self.browser)
         for _ in range(N):
@@ -36,15 +26,15 @@ class Setup:
 
         sleep(2)
         email = self.browser.find_element('id', 'email')
-        email.send_keys("YOUR FACEBOOK USERNAME")
+        email.send_keys("100094451243160")
 
         sleep(2)
         password = self.browser.find_element('id', 'pass')
-        password.send_keys("YOUR FACEBOOK PASSWORD")
+        password.send_keys("123abc123ABC*")
         sleep(2)
         submit_button = self.browser.find_element('name', 'login')
         submit_button.click()
-        sleep(2)
+        sleep(5)
         self.browser.get('https://www.facebook.com/')
 
     def ready_for_post(self):
@@ -61,11 +51,10 @@ class Setup:
         try:
             send_post = WebDriverWait(self.browser, 10).until(
                 EC.element_to_be_clickable((By.XPATH,
-                                            '//*[starts-with(@id,"mount_0_0")]/div/div[1]/div/div[4]/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/form/div/div[1]/div/div/div[1]/div/div[3]/div[2]/div/div/div'))
+                                            '//*[starts-with(@id,"mount_0_0")]/div/div[1]/div/div[4]/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/form/div/div[1]/div/div/div[1]/div/div[3]/div[3]/div/div/div'))
             )
             send_post.click()
-
-            delay = randint(300, 600)
+            delay = randint(3600, 7200)
             sleep(delay)
 
         except:

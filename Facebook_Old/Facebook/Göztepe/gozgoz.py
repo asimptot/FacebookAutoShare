@@ -34,12 +34,8 @@ class FBPost:
             actions.send_keys(text_to_post).perform()
             sleep(5)
 
-            send_post = WebDriverWait(self.browser, 10).until(
-                EC.element_to_be_clickable((By.XPATH,
-                                            '//*[starts-with(@id,"mount_0_0")]/div/div[1]/div/div[4]/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/form/div/div[1]/div/div/div[1]/div/div[3]/div[2]/div/div/div'))
-            )
-            send_post.click()
-            sleep(300)
+            Setup.send_post(self)
+            actions.send_keys(Keys.RETURN).perform()
         except:
             print("Something went wrong, exiting script to avoid conflicts")
 
@@ -60,7 +56,4 @@ list = sample(goztepe, len(goztepe))
 for i in range(len(goztepe)):
     group_url = 'https://www.facebook.com/groups/' + list[i] + '/buy_sell_discussion'
     fb.post_on_facebook(group_url)
-    if i % 5 == 0:
-        print('1 saat bekletiliyor...')
-        sleep(3600)
 fb.close_browser()
