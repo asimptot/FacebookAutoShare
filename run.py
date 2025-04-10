@@ -1,11 +1,4 @@
-import sys
 from init import *
-from random import choice, sample
-from time import sleep
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 sys.path.append(r'C:\\Projects\\Facebook')
 warnings.filterwarnings("ignore")
