@@ -1,23 +1,26 @@
-from time import sleep
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.by import By
-from random import randint, sample, choice
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 import undetected_chromedriver as uc
-import warnings, os
-from g4f.client import Client
-import g4f.models
-import asyncio
-
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-warnings.filterwarnings("ignore")
-client = Client()
-messages = []
+from selenium.webdriver.common.keys import Keys
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from time import sleep
+import ctypes, glob, re
+import os, uuid, random, logging, traceback
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from collections import Counter
+import numpy as np
+from skimage.metrics import structural_similarity as ssim
+import cv2, warnings, time
+from PIL import Image
+from datetime import datetime
 
 class Setup:
-    def login(self):
+    def __init__(self):
+        ctypes.windll.kernel32.SetThreadExecutionState(
+            ctypes.c_uint(0x80000002)
+        )
         options = uc.ChromeOptions()
         options.add_argument('--headless')
         options.add_argument("--window-position=-2400,-2400")
