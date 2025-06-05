@@ -1,26 +1,47 @@
-import undetected_chromedriver as uc
-from selenium.webdriver.common.keys import Keys
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
-import ctypes, glob, re
-import os, uuid, random, logging, traceback
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from collections import Counter
-import numpy as np
-from skimage.metrics import structural_similarity as ssim
-import cv2, warnings, time
-from PIL import Image
-from datetime import datetime
+from selenium.webdriver.common.by import By
+from random import randint, sample, choice
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+import undetected_chromedriver as uc
+import warnings, os
+from g4f.client import Client
+import g4f.models
+from g4f.Provider import RetryProvider
+import asyncio, unicodedata, random
+import sys
+
+if sys.platform == 'win32':
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
+provider_names = [
+    "Chatgpt4o",
+    "ChatgptFree",
+    "Free2GPT",
+    "GizAI",
+    "Pizzagpt",
+    "Qwen_QVQ_72B",
+    "Qwen_Qwen_2_5",
+    "Qwen_Qwen_2_5M",
+    "Qwen_Qwen_2_5_Max",
+    "Qwen_Qwen_2_72B"
+]
+
+providers = []
+for name in provider_names:
+    try:
+        ProviderClass = getattr(g4f.Provider, name)
+        providers.append(ProviderClass)
+    except AttributeError:
+        print(f"Provider not found: {name}")
+
+client = Client(provider=RetryProvider(providers, shuffle=True))
+messages = []
 
 class Setup:
-    def __init__(self):
-        ctypes.windll.kernel32.SetThreadExecutionState(
-            ctypes.c_uint(0x80000002)
-        )
+    def login(self):
         options = uc.ChromeOptions()
         options.add_argument('--headless')
         options.add_argument("--window-position=-2400,-2400")
@@ -29,7 +50,7 @@ class Setup:
         options.add_argument("--disable-gpu")
         options.add_argument("--force-device-scale-factor=0.75")
 
-        self.browser = uc.Chrome(options=options, version_main=135)
+        self.browser = uc.Chrome(options=options, version_main=137)
         self.actions = ActionChains(self.browser)
         self.browser.maximize_window()
         self.browser.get('https://www.facebook.com/')
@@ -82,8 +103,9 @@ class Setup:
         sleep(10)
 
         prompt = f"Maak een unieke en boeiende post voor een tweedehands artikel. Beschrijving: {item_description}. "
+
         response = client.chat.completions.create(
-            model=g4f.models.blackboxai,
+            model=g4f.models.grok_3,
             messages=[{"role": "user", "content": prompt}],
         )
 
@@ -107,8 +129,8 @@ class Setup:
         send_post.click()
         sleep(10)
 
-        delay = randint(60, 120)
+        delay = randint(120, 240)
         sleep(delay)
 
     def close_browser(self):
-        self.browser.close()
+        self.browser.quit()
