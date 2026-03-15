@@ -1,0 +1,48 @@
+# Credentials - SENSITIVE DATA
+credentials.py
+
+# Product configurations (optional - if you add your own products)
+products.py
+
+# Product images
+*.jpg
+*.jpeg
+*.png
+*.gif
+!example*.jpg
+!example*.png
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Selenium
+*.log
+chromedriver.exe
+
+# HAR ve cookies (hassas bilgi içerebilir)
+har_and_cookies/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,11 @@
+# Facebook Product Sales Automation - Requirements
+
+# Selenium and Chrome Driver
+undetected-chromedriver>=3.5.5
+selenium>=4.15.0
+
+# AI Text Generation
+g4f>=0.2.0
+
+# Other requirements (usually installed automatically)
+requests>=2.31.0
