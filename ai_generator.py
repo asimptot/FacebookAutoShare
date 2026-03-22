@@ -23,7 +23,11 @@ class AITextGenerator:
                 f"Maak een korte, aantrekkelijke Facebook post (maximaal 200 woorden) "
                 f"voor dit tweedehands artikel: {product_description}. "
                 f"Wees enthousiast en gebruik emoji's. "
-                f"BELANGRIJK: Gebruik GEEN hashtags (#). Schrijf alleen gewone tekst met emoji's."
+                f"BELANGRIJK: "
+                f"- Gebruik GEEN hashtags (#). "
+                f"- Gebruik GEEN Markdown formatting zoals **bold**, *italic*, of __underline__. "
+                f"- Schrijf alleen gewone tekst met emoji's. "
+                f"- Gebruik geen sterretjes (*) of andere formatteringstekens."
             )
             
             response = self.client.chat.completions.create(
@@ -32,6 +36,17 @@ class AITextGenerator:
             )
             
             generated_text = response.choices[0].message.content
+            
+            # Clean up any Markdown formatting that might have slipped through
+            if generated_text:
+                # Remove ** for bold
+                generated_text = generated_text.replace('**', '')
+                # Remove __ for bold/underline
+                generated_text = generated_text.replace('__', '')
+                # Remove single * for italic (but keep if it's part of normal text)
+                # Only remove if it appears in pairs like *text*
+                import re
+                generated_text = re.sub(r'\*([^\*]+)\*', r'\1', generated_text)
             
             if generated_text and len(generated_text) > 30:
                 return generated_text

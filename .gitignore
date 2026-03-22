@@ -40,6 +40,9 @@ ENV/
 *.log
 chromedriver.exe
 
+# Output files
+failed.txt
+
 # HAR ve cookies (hassas bilgi içerebilir)
 har_and_cookies/
 

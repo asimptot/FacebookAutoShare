@@ -19,6 +19,7 @@ class ProductPoster:
         self.total_posts = 0
         self.successful_posts = 0
         self.failed_posts = 0
+        self.failed_groups = []  # Track failed group IDs with error details
     
     def start(self):
         """Start bot and login"""
@@ -62,21 +63,21 @@ class ProductPoster:
                 generated_text = description
             
             # Post to all groups with the same text and images
-            self._post_product_to_groups(product_name, images, generated_text)
+            self._post_product_to_groups(product_name, images, generated_text, description)
             
             print(f"\n✅ {product_name} posted to all groups!\n")
         
         self._print_summary()
     
-    def _post_product_to_groups(self, product_name, images, text_to_post):
+    def _post_product_to_groups(self, product_name, images, text_to_post, description):
         """Post single product to all groups with pre-generated text and images"""
         for group_index, group_id in enumerate(FACEBOOK_GROUPS, 1):
             try:
                 print(f"  [{group_index}/{len(FACEBOOK_GROUPS)}] Group: {group_id}")
                 
                 self.bot.navigate_to_group(group_id)
-                # Pass images list and pre-generated text
-                self.bot.create_post(images, text_to_post)
+                # Pass images, text, product name, and price (extracted from description)
+                self.bot.create_post(images, text_to_post, product_name, description)
                 self.bot.publish_post()
                 
                 self.successful_posts += 1
@@ -86,11 +87,19 @@ class ProductPoster:
             except Exception as e:
                 self.failed_posts += 1
                 self.total_posts += 1
-                print(f"  ❌ Error: {str(e)[:80]}")
+                error_msg = str(e)[:80]
+                print(f"  ❌ Error: {error_msg}")
+                
+                # Record failed group with details
+                self.failed_groups.append({
+                    'product': product_name,
+                    'group_id': group_id,
+                    'error': error_msg
+                })
                 continue
     
     def _print_summary(self):
-        """Print summary statistics"""
+        """Print summary statistics and save failed groups to file"""
         print(f"\n{'='*60}")
         print("📊 SUMMARY")
         print(f"{'='*60}")
@@ -99,6 +108,29 @@ class ProductPoster:
         print(f"❌ Failed: {self.failed_posts}")
         print(f"📈 Success rate: {(self.successful_posts/self.total_posts*100):.1f}%")
         print(f"{'='*60}\n")
+        
+        # Save failed groups to file
+        if self.failed_groups:
+            try:
+                with open('failed.txt', 'w', encoding='utf-8') as f:
+                    f.write("FAILED GROUP IDs\n")
+                    f.write("=" * 60 + "\n\n")
+                    
+                    # Extract unique group IDs from failed attempts
+                    failed_ids = list(set([failed['group_id'] for failed in self.failed_groups]))
+                    failed_ids.sort()  # Sort for readability
+                    
+                    for group_id in failed_ids:
+                        f.write(f"{group_id}\n")
+                    
+                    f.write("\n" + "=" * 60 + "\n")
+                    f.write(f"Total failed groups: {len(failed_ids)}\n")
+                
+                print(f"📄 Failed group IDs saved to: failed.txt")
+            except Exception as e:
+                print(f"⚠️ Could not save failed.txt: {e}")
+        else:
+            print("🎉 No failed posts!")
     
     def stop(self):
         """Stop bot"""
